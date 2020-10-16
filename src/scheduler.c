@@ -172,6 +172,7 @@ static struct rt_thread* _get_highest_priority_thread(rt_ubase_t *highest_prio)
 #else
     highest_ready_priority = __rt_ffs(rt_thread_ready_priority_group) - 1;
 #endif
+    // rt_kprintf("DEBUG: highest_ready_priority = %d\n", highest_ready_priority);
 
     /* get highest ready priority thread */
     highest_priority_thread = rt_list_entry(rt_thread_priority_table[highest_ready_priority].next,
@@ -735,6 +736,7 @@ void rt_schedule_insert_thread(struct rt_thread *thread)
     rt_thread_ready_table[thread->number] |= thread->high_mask;
 #endif
     rt_thread_ready_priority_group |= thread->number_mask;
+    // rt_kprintf("DEBUG: insert thread priority: %d name: \n", thread->current_priority, thread->name);
 
 __exit:
     /* enable interrupt */

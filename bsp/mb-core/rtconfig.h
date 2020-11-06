@@ -7,7 +7,7 @@
 /* RT-Thread Kernel */
 
 #define RT_NAME_MAX 8
-#define RT_ALIGN_SIZE 4
+#define RT_ALIGN_SIZE 8
 #define RT_THREAD_PRIORITY_32
 #define RT_THREAD_PRIORITY_MAX 32
 #define RT_TICK_PER_SECOND 100
@@ -43,8 +43,9 @@
 #define RT_CONSOLEBUF_SIZE 128
 #define RT_CONSOLE_DEVICE_NAME "uart"
 #define RT_VER_NUM 0x40002
+#define ARCH_CPU_64BIT
 #define ARCH_RISCV
-#define ARCH_RISCV32
+#define ARCH_RISCV64
 
 /* RT-Thread Components */
 

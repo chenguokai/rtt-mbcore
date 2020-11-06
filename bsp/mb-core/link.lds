@@ -13,9 +13,9 @@ OUTPUT_ARCH( "riscv" )
 
 MEMORY
 {
-   SRAM : ORIGIN = 0x80000000, LENGTH = 0x70000
-   UART : ORIGIN = 0x80080000, LENGTH = 0x1000
-   HEAP : ORIGIN = 0x800c0000, LENGTH = 0x5000
+   SRAM : ORIGIN = 0x40000000, LENGTH = 0x70000
+   UART : ORIGIN = 0x40080000, LENGTH = 0x1000
+   HEAP : ORIGIN = 0x400c0000, LENGTH = 0x5000
 }
 
 ENTRY(_start)
@@ -90,7 +90,9 @@ SECTIONS
 
         *(.sdata)
         *(.sdata.*)
+        . = ALIGN(8);
     } > SRAM
+
 
     /* stack for dual core */
     .stack :

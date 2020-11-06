@@ -22,10 +22,9 @@ int tick_isr(void)
     // clint->mtimecmp[core_id] += tick_cycles;
 #if 1
     uint64_t next;
-    next = ((uint64_t)read_csr(0x7c1)) << 32 | read_csr(0x7c0); // mtime
+    next = ((uint64_t)read_csr(0x7c0)); // mtime
     next += interval;
-    write_csr(0x7c2, (uint32_t)(next & 0xffffffffUL)); // mtimecmplo
-    write_csr(0x7c3, (uint32_t)(next>>32)); // mtimecmphi
+    write_csr(0x7c2, (uint64_t)(next)); // mtimecmplo
 #elif 0
     uint32_t next;
     next = read_csr(0xc01); // mtime
@@ -47,11 +46,10 @@ int rt_hw_tick_init(void)
     // clear_csr(mie, MIE_MTIE); // we have a 
 #if 1
     uint64_t next = 0;
-    next = ((uint64_t)read_csr(0x7c1)) << 32 | read_csr(0x7c0); // mtime
+    next = ((uint64_t)read_csr(0x7c0)); // mtime
     next += interval;
     
-    write_csr(0x7c2, (uint32_t)(next & 0xffffffffUL)); // mtimecmplo
-    write_csr(0x7c3, (uint32_t)(next>>32)); // mtimecmphi
+    write_csr(0x7c2, (uint64_t)(next)); // mtimecmplo
 #elif 0
     uint32_t next = 0;
     next = read_csr(0xc01);

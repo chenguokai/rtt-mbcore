@@ -85,7 +85,7 @@ void handle_syscall(uintptr_t mcause, uintptr_t mepc, uintptr_t sp) {
 uintptr_t handle_trap(uintptr_t mcause, uintptr_t mepc, uintptr_t sp) {
     // while (1);
     rt_hw_interrupt_disable();
-    if (mcause == (uint32_t)(0x80000007UL)) {
+    if (mcause == (uint64_t)(0x8000000000000007ULL)) {
         // timer interrupt
         tick_isr();
     }

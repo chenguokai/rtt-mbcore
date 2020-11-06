@@ -13,8 +13,8 @@
 extern unsigned int __bss_start;
 extern unsigned int __bss_end;
 
-#define RT_HW_HEAP_BEGIN    (void*)(0xc0000UL) // about 12M above the kernel load address
-#define RT_HW_HEAP_END      (void*)(0xc0000UL + 20 * 1024) // 20K in total
+#define RT_HW_HEAP_BEGIN    (void*)(0x400c0000UL) // about 12M above the kernel load address
+#define RT_HW_HEAP_END      (void*)(0x400c0000UL + 20 * 1024) // 20K in total
 
 void rt_hw_board_init(void);
 void rt_init_user_mem(struct rt_thread *thread, const char *name, unsigned long *entry);
